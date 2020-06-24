@@ -24,8 +24,11 @@ class NetworkManager {
             if let error = error { print(error); return }
             guard let data = data else { return }
 
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
             do {
-                let repos = try JSONDecoder().decode([Repo].self, from: data)
+                let repos = try decoder.decode([Repo].self, from: data)
                 complition(repos)
             } catch let jsonError {
                 print(jsonError.localizedDescription)
@@ -36,7 +39,7 @@ class NetworkManager {
     
     func fetchImage(repo: Repo, with complition: @escaping (UIImage) -> Void) {
         
-        guard let imageURL = URL(string: repo.owner.avatar_url ?? "") else { return }
+        guard let imageURL = URL(string: repo.owner.avatarUrl ?? "") else { return }
         
         URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
             if let error = error { print(error); return }

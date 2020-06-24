@@ -21,7 +21,7 @@ class RepoCell: UITableViewCell {
         nameLabel.text = repo.name
         descriptionLabel.text = "Description: " + (repo.description ?? "Unknown")
         languageLabel.text = "Language: " + (repo.language ?? "Unknown")
-        starLabel.text = "Stars: \(repo.stargazers_count ?? 0)"
-        forkLabel.text = "Forks: \(repo.forks_count ?? 0)"
+        starLabel.text = "Stars: \(repo.stargazersCount ?? 0)"
+        forkLabel.text = "Forks: \(repo.forksCount ?? 0)"
     }
 }

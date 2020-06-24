@@ -20,17 +20,17 @@
 
 struct Repo: Decodable {
     let name: String?
-    let full_name: String?
+    let fullName: String?
     let description: String?
     let language: String?
-    let stargazers_count: Int?
-    let forks_count: Int?
+    let stargazersCount: Int?
+    let forksCount: Int?
     let owner: Owner
     let license: String?
 }
 
 struct Owner: Decodable {
     let login: String?
-    let avatar_url: String?
+    let avatarUrl: String?
     let type: String?
 }
