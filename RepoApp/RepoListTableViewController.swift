@@ -11,15 +11,17 @@ import UIKit
 class RepoListTableViewController: UITableViewController {
 
     private var repos: [Repo] = []
-    let urlString = "https://api.github.com/users/GordeyGuselnikov/repos"
+//    let urlString = "https://api.github.com/users/GordeyGuselnikov/repos"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.rowHeight = 100
-        NetworkManager.shared.fetchData(from: urlString) { (repos) in
-            DispatchQueue.main.async {
-                self.repos = repos
-                self.tableView.reloadData()
+        
+        NetworkManager.shared.fetchData() { (repos) in
+            DispatchQueue.main.async { // выходим из фонового режима в основной // это можно реализовать в NetworkManager
+                self.repos = repos // присвоение свойству класса RepoListTableViewController экземпляр который вернул коплишнХендлер
+                self.tableView.reloadData() // нам надо перегрузить методы протоколов UITableViewDataSource // пока данные возвращаются из коплишнХендлер, методы numberOfRowsInSection уже работают, поэтому перегружаем
             }
         }
     }
@@ -30,16 +32,20 @@ class RepoListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepoCell
         
         let repo = repos[indexPath.row]
-//        cell.configure(with: repo)
-        cell.textLabel?.text = repo.full_name
-        cell.detailTextLabel?.text = repo.description
+        cell.configure(with: repo)
 
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let repo = repos[indexPath.row]
+        print(repo)
+        performSegue(withIdentifier: "showDetails", sender: repo)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -76,14 +82,15 @@ class RepoListTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    // MARK: - Navigation
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            if segue.identifier == "showDetails" {
+                let DetailsVC = segue.destination as! DetailViewController
+    //            trackDetailsVC.track = trackList[indexPath.row]
+                DetailsVC.repo = sender as? Repo
+            }
+        }
 
 }

@@ -16,6 +16,7 @@
 		7299D47F24A0D93400888070 /* RepoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D47E24A0D93400888070 /* RepoListTableViewController.swift */; };
 		7299D48124A0DA3000888070 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D48024A0DA3000888070 /* NetworkManager.swift */; };
 		7299D48324A0E64F00888070 /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D48224A0E64F00888070 /* RepoCell.swift */; };
+		72DD4EE724A31C1F00A1A1DE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7299D47E24A0D93400888070 /* RepoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListTableViewController.swift; sourceTree = "<group>"; };
 		7299D48024A0DA3000888070 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7299D48224A0E64F00888070 /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
+		72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				7299D47A24A0D24300888070 /* Repo.swift */,
 				7299D47E24A0D93400888070 /* RepoListTableViewController.swift */,
 				7299D48224A0E64F00888070 /* RepoCell.swift */,
+				72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */,
 				7299D48024A0DA3000888070 /* NetworkManager.swift */,
 				7299D46C24A0D22300888070 /* Main.storyboard */,
 				7299D46F24A0D22900888070 /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 				7299D46924A0D22300888070 /* SceneDelegate.swift in Sources */,
 				7299D47B24A0D24300888070 /* Repo.swift in Sources */,
 				7299D48324A0E64F00888070 /* RepoCell.swift in Sources */,
+				72DD4EE724A31C1F00A1A1DE /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
