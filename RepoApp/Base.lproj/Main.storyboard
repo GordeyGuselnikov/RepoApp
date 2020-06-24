@@ -119,8 +119,8 @@
                                     <constraint firstAttribute="width" secondItem="EgP-nV-Csr" secondAttribute="height" multiplier="1:1" id="ejh-A9-gBT"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-FK-oda">
-                                <rect key="frame" x="161" y="444" width="53" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-FK-oda">
+                                <rect key="frame" x="161" y="426" width="53" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -129,14 +129,22 @@
                                 <rect key="frame" x="177" y="381" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMn-Bc-J3A">
+                                <rect key="frame" x="150.5" y="475" width="74" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="H2w-FK-oda" firstAttribute="centerX" secondItem="gaD-iZ-DRT" secondAttribute="centerX" id="1Ez-Ap-EVc"/>
                             <constraint firstItem="EgP-nV-Csr" firstAttribute="top" secondItem="X4B-Wj-KJe" secondAttribute="top" constant="74" id="3oj-DS-Oae"/>
+                            <constraint firstItem="H2w-FK-oda" firstAttribute="top" secondItem="EgP-nV-Csr" secondAttribute="bottom" constant="53" id="7k5-bg-4d8"/>
                             <constraint firstItem="EgP-nV-Csr" firstAttribute="leading" secondItem="X4B-Wj-KJe" secondAttribute="leading" constant="60" id="DUY-NO-JgN"/>
                             <constraint firstItem="EgP-nV-Csr" firstAttribute="centerX" secondItem="gaD-iZ-DRT" secondAttribute="centerX" id="Foq-rv-uP8"/>
-                            <constraint firstItem="H2w-FK-oda" firstAttribute="centerX" secondItem="gaD-iZ-DRT" secondAttribute="centerX" id="OLA-qU-oGo"/>
-                            <constraint firstItem="H2w-FK-oda" firstAttribute="top" secondItem="EgP-nV-Csr" secondAttribute="bottom" constant="71" id="Wp4-tv-UJF"/>
+                            <constraint firstItem="vMn-Bc-J3A" firstAttribute="centerX" secondItem="gaD-iZ-DRT" secondAttribute="centerX" id="T9h-Ma-XAQ"/>
+                            <constraint firstItem="vMn-Bc-J3A" firstAttribute="top" secondItem="H2w-FK-oda" secondAttribute="bottom" constant="22.5" id="bWM-EO-ree"/>
                             <constraint firstItem="X4B-Wj-KJe" firstAttribute="trailing" secondItem="EgP-nV-Csr" secondAttribute="trailing" constant="60" id="pHN-CW-aFx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X4B-Wj-KJe"/>
@@ -145,6 +153,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="Yz1-15-s7h" id="1nc-Jv-lUF"/>
                         <outlet property="avatarImageView" destination="EgP-nV-Csr" id="rXV-B6-Pj3"/>
+                        <outlet property="licenseLabel" destination="vMn-Bc-J3A" id="tyd-HZ-VCa"/>
                         <outlet property="loginLabel" destination="H2w-FK-oda" id="F4g-Uj-O8H"/>
                     </connections>
                 </viewController>

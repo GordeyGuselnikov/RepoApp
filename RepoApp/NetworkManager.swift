@@ -6,12 +6,12 @@
 //  Copyright © 2020 gordeyStudio. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     
     static let shared = NetworkManager()
-    let urlString = "https://api.github.com/users/GordeyGuselnikov/repos"
+    let urlString = "https://api.github.com/users/LexDeBash/repos"
     
     private init() {}
     
@@ -30,6 +30,20 @@ class NetworkManager {
                 print(jsonError.localizedDescription)
             }
             
+        }.resume()
+    }
+    
+    func fetchImage(repo: Repo, with complition: @escaping (UIImage) -> Void) {
+        
+        guard let imageURL = URL(string: repo.owner.avatar_url ?? "") else { return }
+        
+        URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+            if let error = error { print(error); return }
+            if let response = response { print(response) }
+            
+            if let data = data, let image = UIImage(data: data) {
+                complition(image)
+            }
         }.resume()
     }
 }
