@@ -12,6 +12,7 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     let urlString = "https://api.github.com/users/LexDeBash/repos"
+//    let urlString = "https://api.github.com/users/GordeyGuselnikov/repos"
     
     private init() {}
     

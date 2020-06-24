@@ -26,7 +26,6 @@ class DetailViewController: UIViewController {
         loginLabel.text = "Login: " + (repo.owner.login ?? "")
         licenseLabel.text = "License: " + (repo.license ?? "Null")
         
-        
         DispatchQueue.global().async {
             NetworkManager.shared.fetchImage(repo: self.repo) { (image) in
                 DispatchQueue.main.async {
