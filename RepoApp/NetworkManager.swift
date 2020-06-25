@@ -17,26 +17,26 @@ class NetworkManager {
     
     private init() {}
     
-//    func fetchDataURLSession(with complition: @escaping ([Repo]) -> Void) {
-//        
-//        guard let url = URL(string: urlString) else { return }
-//
-//        URLSession.shared.dataTask(with: url) { (data, _, error) in
-//            if let error = error { print(error); return }
-//            guard let data = data else { return }
-//
-//            let decoder = JSONDecoder()
-//            decoder.keyDecodingStrategy = .convertFromSnakeCase
-//            
-//            do {
-//                let repos = try decoder.decode([Repo].self, from: data)
-//                complition(repos)
-//            } catch let jsonError {
-//                print(jsonError.localizedDescription)
-//            }
-//            
-//        }.resume()
-//    }
+    func fetchDataURLSession(with complition: @escaping ([Repo]) -> Void) {
+        
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error { print(error); return }
+            guard let data = data else { return }
+
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            do {
+                let repos = try decoder.decode([Repo].self, from: data)
+                complition(repos)
+            } catch let jsonError {
+                print(jsonError.localizedDescription)
+            }
+            
+        }.resume()
+    }
     
     func fetchDataAlamofire(with complition: @escaping ([Repo]) -> Void) {
         
@@ -51,7 +51,8 @@ class NetworkManager {
                 switch response.result {
                 case .success(let value):
                     guard let value = value as? [[String: Any]] else { return }
-            
+                    print("VALUE : \(value)")
+                    
                     for dictionaryRepo in value {
                         let repo = Repo(
                             name: dictionaryRepo["name"] as? String,
@@ -63,6 +64,7 @@ class NetworkManager {
                             owner: dictionaryRepo["owner"] as? Owner,
                             license: dictionaryRepo["license"] as? String
                         )
+                        print("REPO: \(value)")
                         repos.append(repo)
                     }
                     
