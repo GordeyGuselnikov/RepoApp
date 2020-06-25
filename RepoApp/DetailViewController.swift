@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
         
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
-        loginLabel.text = "Login: " + (repo.owner.login ?? "")
+        loginLabel.text = "Login: " + (repo.owner?.login ?? "")
         licenseLabel.text = "License: " + (repo.license ?? "Null")
         
         DispatchQueue.global().async {

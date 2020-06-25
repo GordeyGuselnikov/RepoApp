@@ -1,0 +1,6 @@
+framework module Pods_RepoApp {
+  umbrella header "Pods-RepoApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

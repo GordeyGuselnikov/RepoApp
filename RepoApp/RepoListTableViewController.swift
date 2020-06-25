@@ -11,17 +11,16 @@ import UIKit
 class RepoListTableViewController: UITableViewController {
 
     private var repos: [Repo] = []
-//    let urlString = "https://api.github.com/users/GordeyGuselnikov/repos"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 100
         
-        NetworkManager.shared.fetchData() { (repos) in
-            DispatchQueue.main.async { // выходим из фонового режима в основной // это можно реализовать в NetworkManager
-                self.repos = repos // присвоение свойству класса RepoListTableViewController экземпляр который вернул коплишнХендлер
-                self.tableView.reloadData() // нам надо перегрузить методы протоколов UITableViewDataSource // пока данные возвращаются из коплишнХендлер, методы numberOfRowsInSection уже работают, поэтому перегружаем
+        NetworkManager.shared.fetchDataAlamofire() { (repos) in
+            DispatchQueue.main.async {
+                self.repos = repos
+                self.tableView.reloadData()
             }
         }
     }
