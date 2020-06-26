@@ -21,7 +21,7 @@ class RepoCell: UITableViewCell {
         nameLabel.text = repo.name
         descriptionLabel.lineBreakMode = .byWordWrapping
         descriptionLabel.numberOfLines = 2
-        descriptionLabel.text = "Description: " + (repo.description ?? "Unknown")
+        descriptionLabel.text = "\(repo.description ?? "Unknown")"
         languageLabel.text = "Language: " + (repo.language ?? "Unknown")
         starLabel.text = "\(repo.stargazersCount ?? 0)"
         forkLabel.text = "\(repo.forksCount ?? 0)"
