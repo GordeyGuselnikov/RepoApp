@@ -29,10 +29,9 @@ class DetailViewController: UIViewController {
     private func setValues(with result: Repo) {
         
         if let imageURL = result.owner?.avatarUrl {
-            NetworkManager.shared.fetchImage(from: imageURL) { imageData in
+            NetworkManager.shared.getAvatarImage(from: imageURL) { imageData in
                 self.activityIndicator.stopAnimating()
                 self.avatarImageView.image = UIImage(data: imageData)
-                print(imageURL)
             }
         }
         

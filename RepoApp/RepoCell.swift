@@ -19,9 +19,11 @@ class RepoCell: UITableViewCell {
     func configure(with repo: Repo) {
         
         nameLabel.text = repo.name
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        descriptionLabel.numberOfLines = 2
         descriptionLabel.text = "Description: " + (repo.description ?? "Unknown")
         languageLabel.text = "Language: " + (repo.language ?? "Unknown")
-        starLabel.text = "Stars: \(repo.stargazersCount ?? 0)"
-        forkLabel.text = "Forks: \(repo.forksCount ?? 0)"
+        starLabel.text = "\(repo.stargazersCount ?? 0)"
+        forkLabel.text = "\(repo.forksCount ?? 0)"
     }
 }

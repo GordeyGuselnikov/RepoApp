@@ -6,7 +6,6 @@
 //  Copyright © 2020 gordeyStudio. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 
 class NetworkManager {
@@ -16,22 +15,20 @@ class NetworkManager {
     private init() {}
     
     func getRepos(_ complition: @escaping ([Repo]) -> Void) {
-        AF.request(URLConstants.reposLexDeBashAPI.rawValue)
+        AF.request(URLConstants.reposAFNetworkingAPI.rawValue)
             .validate()
             .responseJSON { (dataResponse) in
                 switch dataResponse.result {
                 case .success(let value):
-//                    print(value)
                     guard let results = Repo.getRepo(from: value) else { return }
                     complition(results)
-                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!RESULTS: \(results)")
                 case .failure(let error):
                     print(error)
                 }
         }
     }
     
-    func fetchImage(from imageUrl: String, with complition: @escaping (Data) -> Void) {
+    func getAvatarImage(from imageUrl: String, with complition: @escaping (Data) -> Void) {
         AF.request(imageUrl)
             .validate()
             .responseData { (response) in

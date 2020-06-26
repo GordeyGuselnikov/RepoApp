@@ -11,6 +11,8 @@ import Foundation
 enum URLConstants: String {
     case reposLexDeBashAPI = "https://api.github.com/users/LexDeBash/repos"
     case reposMyAPI = "https://api.github.com/users/GordeyGuselnikov/repos"
+    case reposCnoonAPI = "https://api.github.com/users/cnoon/repos"
+    case reposAFNetworkingAPI = "https://api.github.com/users/AFNetworking/repos"
 }
 
 enum Segues: String {

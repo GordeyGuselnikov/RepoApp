@@ -15,7 +15,7 @@ class RepoListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = 100
+        tableView.rowHeight = 120
         downloadData()
         setupRefreshControl()
     }
@@ -49,6 +49,7 @@ class RepoListTableViewController: UITableViewController {
         }
 }
 
+// MARK: - Private Methods
 extension RepoListTableViewController {
     
     private func downloadData() {
