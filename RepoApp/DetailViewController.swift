@@ -20,13 +20,14 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         setValues(with: result)
-        print(result!)
     }
     
     private func setValues(with result: Repo) {
+        
         if let imageURL = result.owner?.avatarUrl {
             NetworkManager.shared.fetchImage(from: imageURL) { imageData in
                 self.activityIndicator.stopAnimating()
@@ -36,6 +37,6 @@ class DetailViewController: UIViewController {
         }
         
         loginLabel.text = "Login: " + (result.owner?.login ?? "")
-//        licenseLabel.text = "License: " + (result.license ?? "Null")
+        licenseLabel.text = "License: " + (result.license ?? "Null")
     }
 }

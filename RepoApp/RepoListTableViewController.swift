@@ -50,13 +50,14 @@ class RepoListTableViewController: UITableViewController {
 }
 
 extension RepoListTableViewController {
+    
     private func downloadData() {
         NetworkManager.shared.getRepos { results in
             self.repos = results
-//            print(self.repos)
             self.tableView.reloadData()
         }
     }
+    
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")

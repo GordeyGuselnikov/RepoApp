@@ -26,7 +26,6 @@ struct Repo: Codable {
     var language: String?
     var stargazersCount: Int?
     var forksCount: Int?
-    
     var license: String?
     
     init(value: [String: Any]) {
@@ -55,10 +54,7 @@ struct Repo: Codable {
     
     static func getRepo(from value: Any) -> [Repo]? {
         guard let value = value as? [[String: Any]] else { return [] }
-        print("!!!!!!!!VALUE: \(value)")
-        let tempValue = value.compactMap { Repo(value: $0) }
-        print("!!!!!!!!tempValue: \(value)")
-        return tempValue
+        return value.compactMap { Repo(value: $0) }
     }
 }
 

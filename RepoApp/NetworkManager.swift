@@ -32,7 +32,6 @@ class NetworkManager {
     }
     
     func fetchImage(from imageUrl: String, with complition: @escaping (Data) -> Void) {
-        
         AF.request(imageUrl)
             .validate()
             .responseData { (response) in
