@@ -17,7 +17,7 @@ class RepoListTableViewController: UITableViewController {
         
         tableView.rowHeight = 100
         
-        NetworkManager.shared.fetchDataURLSession() { (repos) in
+        NetworkManager.shared.fetchDataAlamofire() { (repos) in
             DispatchQueue.main.async {
                 self.repos = repos
                 self.tableView.reloadData()
@@ -41,16 +41,15 @@ class RepoListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let repo = repos[indexPath.row]
-//        print(repo)
-        performSegue(withIdentifier: "showDetails", sender: repo)
+        let currentRepo = repos[indexPath.row]
+        performSegue(withIdentifier: Segues.showDetail.rawValue, sender: currentRepo)
     }
 
     // MARK: - Navigation
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "showDetails" {
-                let DetailsVC = segue.destination as! DetailViewController
-                DetailsVC.repo = sender as? Repo
+            if segue.identifier == Segues.showDetail.rawValue {
+                let DetailVC = segue.destination as! DetailViewController
+                DetailVC.result = sender as? Repo
             }
         }
 }

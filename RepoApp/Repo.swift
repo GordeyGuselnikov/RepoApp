@@ -28,21 +28,24 @@ struct Repo: Decodable {
     let owner: Owner?
     let license: String?
     
-//    init(dictionaryRepo: [String: Any]) {
-//        name = dictionaryRepo["name"] as? String
-//        fullName = dictionaryRepo["full_name"] as? String
-//        description = dictionaryRepo["description"] as? String
-//        language = dictionaryRepo["language"] as? String
-//        stargazersCount = dictionaryRepo["stargazers_count"] as? Int
-//        forksCount = dictionaryRepo["forks_count"] as? Int
-//        owner = dictionaryRepo["owner"] as? Owner
-//        license = dictionaryRepo["license"] as? String
-//    }
+    init(value: [String: Any]) {
+        name = value["name"] as? String
+        fullName = value["full_name"] as? String
+        description = value["description"] as? String
+        language = value["language"] as? String
+        stargazersCount = value["stargazers_count"] as? Int
+        forksCount = value["forks_count"] as? Int
+        
+        let ownerDictionary = value["owner"] as? [String: String] ?? [:]
+        owner = Owner(value: ownerDictionary)
+        
+        license = value["license"] as? String
+    }
     
-//    static func getRepos(from value: Any) -> [Repo]? {
-//        guard let value = value as? [[String: Any]] else { return nil }
-//        return value.compactMap { Repo(dictionaryRepo: $0) }
-//    }
+    static func getRepos(from value: Any) -> [Repo]? {
+        guard let value = value as? [[String: Any]] else { return [] }
+        return value.compactMap { Repo(value: $0) }
+    }
 }
 
 struct Owner: Decodable {
@@ -50,10 +53,10 @@ struct Owner: Decodable {
     let avatarUrl: String?
     let type: String?
     
-//    init(dictionaryOwner: [String: Any]) {
-//        login = dictionaryOwner["login"] as? String
-//        avatarUrl = dictionaryOwner["avatarUrl"] as? String
-//        type = dictionaryOwner["type"] as? String
-//    }
+    init(value: [String: String]) {
+        login = value["login"]
+        avatarUrl = value["avatarUrl"]
+        type = value["type"]
+    }
     
 }

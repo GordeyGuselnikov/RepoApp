@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		7299D47F24A0D93400888070 /* RepoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D47E24A0D93400888070 /* RepoListTableViewController.swift */; };
 		7299D48124A0DA3000888070 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D48024A0DA3000888070 /* NetworkManager.swift */; };
 		7299D48324A0E64F00888070 /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D48224A0E64F00888070 /* RepoCell.swift */; };
+		72AD772924A5E9D0002A9B6C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AD772824A5E9D0002A9B6C /* Constants.swift */; };
 		72DD4EE724A31C1F00A1A1DE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */; };
 		BFBBB400968AA58B3A393567 /* Pods_RepoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2CA0B635D5E4A93CC1C857 /* Pods_RepoApp.framework */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 		7299D47E24A0D93400888070 /* RepoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListTableViewController.swift; sourceTree = "<group>"; };
 		7299D48024A0DA3000888070 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7299D48224A0E64F00888070 /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
+		72AD772824A5E9D0002A9B6C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AB2CA0B635D5E4A93CC1C857 /* Pods_RepoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RepoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F304EB7104B1E61E570E7B9D /* Pods-RepoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RepoApp.debug.xcconfig"; path = "Target Support Files/Pods-RepoApp/Pods-RepoApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -56,7 +58,6 @@
 				F304EB7104B1E61E570E7B9D /* Pods-RepoApp.debug.xcconfig */,
 				0BF764041BB9D94B38A5F262 /* Pods-RepoApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -88,6 +89,7 @@
 				7299D48224A0E64F00888070 /* RepoCell.swift */,
 				72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */,
 				7299D48024A0DA3000888070 /* NetworkManager.swift */,
+				72AD772824A5E9D0002A9B6C /* Constants.swift */,
 				7299D46C24A0D22300888070 /* Main.storyboard */,
 				7299D46F24A0D22900888070 /* Assets.xcassets */,
 				7299D47124A0D22900888070 /* LaunchScreen.storyboard */,
@@ -226,6 +228,7 @@
 				7299D47B24A0D24300888070 /* Repo.swift in Sources */,
 				7299D48324A0E64F00888070 /* RepoCell.swift in Sources */,
 				72DD4EE724A31C1F00A1A1DE /* DetailViewController.swift in Sources */,
+				72AD772924A5E9D0002A9B6C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
