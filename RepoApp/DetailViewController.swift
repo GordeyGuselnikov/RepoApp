@@ -20,8 +20,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        activityIndicator.startAnimating()
-        //        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
         setValues(with: result)
         print(result!)
     }
@@ -29,13 +29,13 @@ class DetailViewController: UIViewController {
     private func setValues(with result: Repo) {
         if let imageURL = result.owner?.avatarUrl {
             NetworkManager.shared.fetchImage(from: imageURL) { imageData in
-                // self.activityIndicator.stopAnimating()
+                self.activityIndicator.stopAnimating()
                 self.avatarImageView.image = UIImage(data: imageData)
                 print(imageURL)
             }
         }
         
         loginLabel.text = "Login: " + (result.owner?.login ?? "")
-        licenseLabel.text = "License: " + (result.license ?? "Null")
+//        licenseLabel.text = "License: " + (result.license ?? "Null")
     }
 }

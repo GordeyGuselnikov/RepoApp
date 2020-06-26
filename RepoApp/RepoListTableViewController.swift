@@ -16,13 +16,8 @@ class RepoListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 100
-        
-        NetworkManager.shared.fetchDataAlamofire() { (repos) in
-            DispatchQueue.main.async {
-                self.repos = repos
-                self.tableView.reloadData()
-            }
-        }
+        downloadData()
+        setupRefreshControl()
     }
 
     // MARK: - Table view data source
@@ -40,9 +35,9 @@ class RepoListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         let currentRepo = repos[indexPath.row]
         performSegue(withIdentifier: Segues.showDetail.rawValue, sender: currentRepo)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: - Navigation
@@ -52,4 +47,28 @@ class RepoListTableViewController: UITableViewController {
                 DetailVC.result = sender as? Repo
             }
         }
+}
+
+extension RepoListTableViewController {
+    private func downloadData() {
+        NetworkManager.shared.getRepos { results in
+            self.repos = results
+//            print(self.repos)
+            self.tableView.reloadData()
+        }
+    }
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl?.addTarget(self, action: #selector(updateView), for: .valueChanged)
+        tableView.addSubview(refreshControl ?? UIRefreshControl())
+    }
+    
+    @objc private func updateView() {
+        NetworkManager.shared.getRepos { results in
+            self.repos = results
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
+    }
 }

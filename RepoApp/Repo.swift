@@ -18,45 +18,60 @@
 //- имя владельца и его аватар;
 //- информация о лицензии.
 
-struct Repo: Decodable {
-    let name: String?
-    let fullName: String?
-    let description: String?
-    let language: String?
-    let stargazersCount: Int?
-    let forksCount: Int?
-    let owner: Owner?
-    let license: String?
+struct Repo: Codable {
+    var name: String?
+    var fullName: String?
+    var owner: Owner?
+    var description: String?
+    var language: String?
+    var stargazersCount: Int?
+    var forksCount: Int?
+    
+    var license: String?
     
     init(value: [String: Any]) {
         name = value["name"] as? String
-        fullName = value["full_name"] as? String
-        description = value["description"] as? String
-        language = value["language"] as? String
-        stargazersCount = value["stargazers_count"] as? Int
-        forksCount = value["forks_count"] as? Int
         
-        let ownerDictionary = value["owner"] as? [String: String] ?? [:]
+        fullName = value["full_name"] as? String
+        
+        let ownerDictionary = value["owner"] as? [String: Any] ?? [:]
         owner = Owner(value: ownerDictionary)
+        
+        description = value["description"] as? String
+        
+        language = value["language"] as? String
+        
+        stargazersCount = value["stargazers_count"] as? Int
+        
+        forksCount = value["forks_count"] as? Int
         
         license = value["license"] as? String
     }
     
-    static func getRepos(from value: Any) -> [Repo]? {
+    init(login: String, avatarUrl: String) {
+        let owner = Owner(login: login, avatarUrl: avatarUrl)
+        self.owner = owner
+    }
+    
+    static func getRepo(from value: Any) -> [Repo]? {
         guard let value = value as? [[String: Any]] else { return [] }
-        return value.compactMap { Repo(value: $0) }
+        print("!!!!!!!!VALUE: \(value)")
+        let tempValue = value.compactMap { Repo(value: $0) }
+        print("!!!!!!!!tempValue: \(value)")
+        return tempValue
     }
 }
 
-struct Owner: Decodable {
-    let login: String?
-    let avatarUrl: String?
-    let type: String?
+struct Owner: Codable {
+    var login, avatarUrl: String?
     
-    init(value: [String: String]) {
-        login = value["login"]
-        avatarUrl = value["avatarUrl"]
-        type = value["type"]
+    init(value: [String: Any]) {
+        login = value["login"] as? String
+        avatarUrl = value["avatar_url"] as? String
     }
     
+    init(login: String, avatarUrl: String) {
+        self.login = login
+        self.avatarUrl = avatarUrl
+    }
 }
