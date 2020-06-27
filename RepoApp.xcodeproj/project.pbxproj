@@ -84,18 +84,58 @@
 			children = (
 				7299D46624A0D22300888070 /* AppDelegate.swift */,
 				7299D46824A0D22300888070 /* SceneDelegate.swift */,
-				7299D47A24A0D24300888070 /* Repo.swift */,
-				7299D47E24A0D93400888070 /* RepoListTableViewController.swift */,
-				7299D48224A0E64F00888070 /* RepoCell.swift */,
-				72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */,
-				7299D48024A0DA3000888070 /* NetworkManager.swift */,
-				72AD772824A5E9D0002A9B6C /* Constants.swift */,
-				7299D46C24A0D22300888070 /* Main.storyboard */,
+				72AD772C24A7297E002A9B6C /* Models */,
+				72AD772D24A7298D002A9B6C /* ViewControllers */,
+				72AD772B24A7296C002A9B6C /* Views */,
+				72AD772A24A72933002A9B6C /* Services */,
+				72AD772E24A7502F002A9B6C /* Storyboards */,
 				7299D46F24A0D22900888070 /* Assets.xcassets */,
-				7299D47124A0D22900888070 /* LaunchScreen.storyboard */,
+				72AD772824A5E9D0002A9B6C /* Constants.swift */,
 				7299D47424A0D22900888070 /* Info.plist */,
 			);
 			path = RepoApp;
+			sourceTree = "<group>";
+		};
+		72AD772A24A72933002A9B6C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7299D48024A0DA3000888070 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		72AD772B24A7296C002A9B6C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7299D48224A0E64F00888070 /* RepoCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		72AD772C24A7297E002A9B6C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7299D47A24A0D24300888070 /* Repo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		72AD772D24A7298D002A9B6C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7299D47E24A0D93400888070 /* RepoListTableViewController.swift */,
+				72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		72AD772E24A7502F002A9B6C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7299D46C24A0D22300888070 /* Main.storyboard */,
+				7299D47124A0D22900888070 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		B7BAA320DBD6BECE4DC340AA /* Frameworks */ = {
