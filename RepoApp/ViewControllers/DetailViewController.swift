@@ -30,8 +30,10 @@ class DetailViewController: UIViewController {
         
         if let imageURL = result.owner?.avatarUrl {
             NetworkManager.shared.getAvatarImage(from: imageURL) { imageData in
-                self.activityIndicator.stopAnimating()
-                self.avatarImageView.image = UIImage(data: imageData)
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.avatarImageView.image = UIImage(data: imageData)
+                }
             }
         }
         

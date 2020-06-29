@@ -26,7 +26,7 @@ class RepoListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepoViewCell
         
         let repo = repos[indexPath.row]
         cell.configure(with: repo)
@@ -54,8 +54,10 @@ extension RepoListTableViewController {
     
     private func downloadData() {
         NetworkManager.shared.getRepos { results in
-            self.repos = results
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.repos = results
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -68,9 +70,11 @@ extension RepoListTableViewController {
     
     @objc private func updateView() {
         NetworkManager.shared.getRepos { results in
-            self.repos = results
-            self.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.repos = results
+                self.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+            }
         }
     }
 }
