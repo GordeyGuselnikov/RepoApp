@@ -10,13 +10,13 @@
         <!--Repository List-->
         <scene sceneID="4eu-FU-Mph">
             <objects>
-                <tableViewController id="Nwc-nR-WYE" customClass="RepoListTableViewController" customModule="RepoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Nwc-nR-WYE" customClass="RepositoryListTableViewController" customModule="RepoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oi7-oQ-u8x">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="D0m-Oi-MRd" customClass="RepoViewCell" customModule="RepoApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="D0m-Oi-MRd" customClass="RepositoryTableViewCell" customModule="RepoApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D0m-Oi-MRd" id="knH-Wt-2oA">

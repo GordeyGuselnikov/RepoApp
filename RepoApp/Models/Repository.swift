@@ -6,7 +6,7 @@
 //  Copyright © 2020 gordeyStudio. All rights reserved.
 //
 
-struct Repo: Codable {
+struct Repository: Codable {
     var name: String?
     var fullName: String?
     var owner: Owner?
@@ -40,9 +40,9 @@ struct Repo: Codable {
         self.owner = owner
     }
     
-    static func getRepo(from value: Any) -> [Repo]? {
+    static func getRepository(from value: Any) -> [Repository]? {
         guard let value = value as? [[String: Any]] else { return [] }
-        return value.compactMap { Repo(value: $0) }
+        return value.compactMap { Repository(value: $0) }
     }
 }
 

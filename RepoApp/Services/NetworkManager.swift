@@ -14,14 +14,16 @@ class NetworkManager {
     
     private init() {}
     
-    func getRepos(_ complition: @escaping ([Repo]) -> Void) {
+    func fetchRepositoriesFromNetwork(_ complition: @escaping ([Repository]) -> Void) {
+        
         AF.request(URLConstants.reposAFNetworkingAPI.rawValue)
             .validate()
             .responseJSON { (dataResponse) in
+                
                 switch dataResponse.result {
                 case .success(let value):
-                    guard let results = Repo.getRepo(from: value) else { return }
-                    complition(results)
+                    guard let repositories = Repository.getRepository(from: value) else { return }
+                    complition(repositories)
                 case .failure(let error):
                     print(error)
                 }
@@ -29,9 +31,11 @@ class NetworkManager {
     }
     
     func getAvatarImage(from imageUrl: String, with complition: @escaping (Data) -> Void) {
+        
         AF.request(imageUrl)
             .validate()
             .responseData { (response) in
+                
                 switch response.result {
                 case .success(let imageData):
                     complition(imageData)

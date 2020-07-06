@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RepoListTableViewController: UITableViewController {
+class RepositoryListTableViewController: UITableViewController {
 
-    private var repos: [Repo] = []
+    private var repositories: [Repository] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,21 +22,21 @@ class RepoListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repos.count
+        return repositories.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepoViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepositoryTableViewCell
         
-        let repo = repos[indexPath.row]
-        cell.configure(with: repo)
+        let repository = repositories[indexPath.row]
+        cell.configure(with: repository)
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentRepo = repos[indexPath.row]
-        performSegue(withIdentifier: Segues.showDetail.rawValue, sender: currentRepo)
+        let currentRepository = repositories[indexPath.row]
+        performSegue(withIdentifier: Segues.showDetail.rawValue, sender: currentRepository)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
@@ -44,18 +44,18 @@ class RepoListTableViewController: UITableViewController {
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == Segues.showDetail.rawValue {
                 let DetailVC = segue.destination as! DetailViewController
-                DetailVC.result = sender as? Repo
+                DetailVC.repository = sender as? Repository
             }
         }
 }
 
 // MARK: - Private Methods
-extension RepoListTableViewController {
+extension RepositoryListTableViewController {
     
     private func downloadData() {
-        NetworkManager.shared.getRepos { results in
+        NetworkManager.shared.fetchRepositoriesFromNetwork { repositories in
             DispatchQueue.main.async {
-                self.repos = results
+                self.repositories = repositories
                 self.tableView.reloadData()
             }
         }
@@ -69,9 +69,9 @@ extension RepoListTableViewController {
     }
     
     @objc private func updateView() {
-        NetworkManager.shared.getRepos { results in
+        NetworkManager.shared.fetchRepositoriesFromNetwork { repositories in
             DispatchQueue.main.async {
-                self.repos = results
+                self.repositories = repositories
                 self.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
             }

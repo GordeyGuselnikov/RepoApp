@@ -12,10 +12,10 @@
 		7299D46E24A0D22300888070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7299D46C24A0D22300888070 /* Main.storyboard */; };
 		7299D47024A0D22900888070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7299D46F24A0D22900888070 /* Assets.xcassets */; };
 		7299D47324A0D22900888070 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7299D47124A0D22900888070 /* LaunchScreen.storyboard */; };
-		7299D47B24A0D24300888070 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D47A24A0D24300888070 /* Repo.swift */; };
-		7299D47F24A0D93400888070 /* RepoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D47E24A0D93400888070 /* RepoListTableViewController.swift */; };
+		7299D47B24A0D24300888070 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D47A24A0D24300888070 /* Repository.swift */; };
+		7299D47F24A0D93400888070 /* RepositoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D47E24A0D93400888070 /* RepositoryListTableViewController.swift */; };
 		7299D48124A0DA3000888070 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D48024A0DA3000888070 /* NetworkManager.swift */; };
-		7299D48324A0E64F00888070 /* RepoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D48224A0E64F00888070 /* RepoViewCell.swift */; };
+		7299D48324A0E64F00888070 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D48224A0E64F00888070 /* RepositoryTableViewCell.swift */; };
 		72AD772924A5E9D0002A9B6C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AD772824A5E9D0002A9B6C /* Constants.swift */; };
 		72DD4EE724A31C1F00A1A1DE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */; };
 		BFBBB400968AA58B3A393567 /* Pods_RepoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2CA0B635D5E4A93CC1C857 /* Pods_RepoApp.framework */; };
@@ -30,10 +30,10 @@
 		7299D46F24A0D22900888070 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7299D47224A0D22900888070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7299D47424A0D22900888070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7299D47A24A0D24300888070 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
-		7299D47E24A0D93400888070 /* RepoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListTableViewController.swift; sourceTree = "<group>"; };
+		7299D47A24A0D24300888070 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		7299D47E24A0D93400888070 /* RepositoryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListTableViewController.swift; sourceTree = "<group>"; };
 		7299D48024A0DA3000888070 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		7299D48224A0E64F00888070 /* RepoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewCell.swift; sourceTree = "<group>"; };
+		7299D48224A0E64F00888070 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		72AD772824A5E9D0002A9B6C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AB2CA0B635D5E4A93CC1C857 /* Pods_RepoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RepoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +131,7 @@
 		72AD772B24A7296C002A9B6C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7299D48224A0E64F00888070 /* RepoViewCell.swift */,
+				7299D48224A0E64F00888070 /* RepositoryTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,7 +139,7 @@
 		72AD772C24A7297E002A9B6C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7299D47A24A0D24300888070 /* Repo.swift */,
+				7299D47A24A0D24300888070 /* Repository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 		72AD772D24A7298D002A9B6C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7299D47E24A0D93400888070 /* RepoListTableViewController.swift */,
+				7299D47E24A0D93400888070 /* RepositoryListTableViewController.swift */,
 				72DD4EE624A31C1F00A1A1DE /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
@@ -286,11 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7299D48124A0DA3000888070 /* NetworkManager.swift in Sources */,
-				7299D47F24A0D93400888070 /* RepoListTableViewController.swift in Sources */,
+				7299D47F24A0D93400888070 /* RepositoryListTableViewController.swift in Sources */,
 				7299D46724A0D22300888070 /* AppDelegate.swift in Sources */,
 				7299D46924A0D22300888070 /* SceneDelegate.swift in Sources */,
-				7299D47B24A0D24300888070 /* Repo.swift in Sources */,
-				7299D48324A0E64F00888070 /* RepoViewCell.swift in Sources */,
+				7299D47B24A0D24300888070 /* Repository.swift in Sources */,
+				7299D48324A0E64F00888070 /* RepositoryTableViewCell.swift in Sources */,
 				72DD4EE724A31C1F00A1A1DE /* DetailViewController.swift in Sources */,
 				72AD772924A5E9D0002A9B6C /* Constants.swift in Sources */,
 			);
