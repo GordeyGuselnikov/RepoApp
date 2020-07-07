@@ -15,14 +15,11 @@ class NetworkManager {
     private init() {}
     
     func fetchRepositoriesFromNetwork(_ complition: @escaping ([Repository]) -> Void) {
-        
-        AF.request(URLConstants.reposAFNetworkingAPI.rawValue)
+        AF.request(URLConstants.reposCnoonAPI.rawValue) // отправили данные на сервер
             .validate()
-            .responseJSON { (dataResponse) in
-                
-                switch dataResponse.result {
-                case .success(let value):
-                    guard let repositories = Repository.getRepository(from: value) else { return }
+            .responseDecodable(of: [Repository].self) { response in // разкодирование данных в соответсвии с типом Course.self
+                switch response.result {
+                case .success(let repositories):
                     complition(repositories)
                 case .failure(let error):
                     print(error)
@@ -31,11 +28,9 @@ class NetworkManager {
     }
     
     func getAvatarImage(from imageUrl: String, with complition: @escaping (Data) -> Void) {
-        
         AF.request(imageUrl)
             .validate()
             .responseData { (response) in
-                
                 switch response.result {
                 case .success(let imageData):
                     complition(imageData)

@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     private func setValues(for repository: Repository) {
 
         loginLabel.text = "Login: " + (repository.owner?.login ?? "")
-        licenseLabel.text = "License: " + (repository.license ?? "Null")
+        licenseLabel.text = "License: " + (repository.license?.name ?? "Null")
         
         if let imageURL = repository.owner?.avatarUrl {
             NetworkManager.shared.getAvatarImage(from: imageURL) { imageData in
