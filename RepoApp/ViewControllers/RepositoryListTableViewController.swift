@@ -75,7 +75,7 @@ extension RepositoryListTableViewController: UISearchResultsUpdating {
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(
-            string: "Pull to refresh",
+            string: "Updating...",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]
         )
         refreshControl?.tintColor = .black
@@ -91,7 +91,7 @@ extension RepositoryListTableViewController: UISearchResultsUpdating {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
-        searchController.searchBar.tintColor = .black
+        searchController.searchBar.tintColor = .white
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
