@@ -13,6 +13,7 @@ enum URLConstants: String {
     case reposMyAPI = "https://api.github.com/users/GordeyGuselnikov/repos"
     case reposCnoonAPI = "https://api.github.com/users/cnoon/repos"
     case reposAFNetworkingAPI = "https://api.github.com/users/AFNetworking/repos"
+    case reposGoogle = "https://api.github.com/users/google/repos"
 }
 
 enum Segues: String {

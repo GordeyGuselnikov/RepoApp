@@ -9,8 +9,17 @@
 import UIKit
 
 class RepositoryListTableViewController: UITableViewController {
-
+    
+    private let searchController = UISearchController(searchResultsController: nil)
     private var repositories: [Repository] = []
+    private var filteredRepositories: [Repository] = []
+    private var searchBarIsEmpty: Bool { // возвращает true если строка поиска пустая
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,24 +27,26 @@ class RepositoryListTableViewController: UITableViewController {
         tableView.rowHeight = 120
         downloadData()
         setupRefreshControl()
+        setupSearchController()
+        
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositories.count
+        return isFiltering ? filteredRepositories.count : repositories.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepositoryTableViewCell
         
-        let repository = repositories[indexPath.row]
+        let repository = isFiltering ? filteredRepositories[indexPath.row] : repositories[indexPath.row]
         cell.configure(with: repository)
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentRepository = repositories[indexPath.row]
+        let currentRepository = isFiltering ? filteredRepositories[indexPath.row] : repositories[indexPath.row]
         performSegue(withIdentifier: Segues.showDetail.rawValue, sender: currentRepository)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -50,7 +61,7 @@ class RepositoryListTableViewController: UITableViewController {
 }
 
 // MARK: - Private Methods
-extension RepositoryListTableViewController {
+extension RepositoryListTableViewController: UISearchResultsUpdating {
     
     private func downloadData() {
         NetworkManager.shared.fetchRepositoriesFromNetwork { repositories in
@@ -63,9 +74,27 @@ extension RepositoryListTableViewController {
     
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl?.addTarget(self, action: #selector(updateView), for: .valueChanged)
+        refreshControl?.attributedTitle = NSAttributedString(
+            string: "Pull to refresh",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]
+        )
+        refreshControl?.tintColor = .black
+        refreshControl?.addTarget(
+            self,
+            action: #selector(updateView),
+            for: .valueChanged
+        )
         tableView.addSubview(refreshControl ?? UIRefreshControl())
+    }
+    
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.tintColor = .black
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     @objc private func updateView() {
@@ -76,5 +105,16 @@ extension RepositoryListTableViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        filteredRepositories = repositories.filter{ repositories in
+            (repositories.name?.lowercased().contains(searchText.lowercased()))! // !!!!!!!
+        }
+        tableView.reloadData()
     }
 }

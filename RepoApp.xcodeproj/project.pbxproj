@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7250C6EA24B611A500F089A8 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7250C6E924B611A500F089A8 /* ImageView.swift */; };
 		7299D46724A0D22300888070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D46624A0D22300888070 /* AppDelegate.swift */; };
 		7299D46924A0D22300888070 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299D46824A0D22300888070 /* SceneDelegate.swift */; };
 		7299D46E24A0D22300888070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7299D46C24A0D22300888070 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		0BF764041BB9D94B38A5F262 /* Pods-RepoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RepoApp.release.xcconfig"; path = "Target Support Files/Pods-RepoApp/Pods-RepoApp.release.xcconfig"; sourceTree = "<group>"; };
+		7250C6E924B611A500F089A8 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		7299D46324A0D22300888070 /* RepoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7299D46624A0D22300888070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7299D46824A0D22300888070 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				7299D48224A0E64F00888070 /* RepositoryTableViewCell.swift */,
+				7250C6E924B611A500F089A8 /* ImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				7299D46924A0D22300888070 /* SceneDelegate.swift in Sources */,
 				7299D47B24A0D24300888070 /* Repository.swift in Sources */,
 				7299D48324A0E64F00888070 /* RepositoryTableViewCell.swift in Sources */,
+				7250C6EA24B611A500F089A8 /* ImageView.swift in Sources */,
 				72DD4EE724A31C1F00A1A1DE /* DetailViewController.swift in Sources */,
 				72AD772924A5E9D0002A9B6C /* Constants.swift in Sources */,
 			);

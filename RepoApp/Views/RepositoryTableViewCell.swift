@@ -15,7 +15,7 @@ class RepositoryTableViewCell: UITableViewCell {
     @IBOutlet var languageLabel: UILabel!
     @IBOutlet var starLabel: UILabel!
     @IBOutlet var forkLabel: UILabel!
-    @IBOutlet var avatarImage: UIImageView! {
+    @IBOutlet var avatarImage: ImageView! {
         didSet {
             avatarImage.contentMode = .scaleAspectFit
             avatarImage.clipsToBounds = true
@@ -33,12 +33,15 @@ class RepositoryTableViewCell: UITableViewCell {
         languageLabel.text = "Language: \(repository.language ?? "Unknown")"
         starLabel.text = "\(repository.stargazersCount ?? 0)"
         forkLabel.text = "\(repository.forksCount ?? 0)"
+//        if let imageURL = repository.owner?.avatarUrl {
+//            NetworkManager.shared.getAvatarImage(from: imageURL) { imageData in
+//                DispatchQueue.main.async {
+//                    self.avatarImage.image = UIImage(data: imageData)
+//                }
+//            }
+//        }
         if let imageURL = repository.owner?.avatarUrl {
-            NetworkManager.shared.getAvatarImage(from: imageURL) { imageData in
-                DispatchQueue.main.async {
-                    self.avatarImage.image = UIImage(data: imageData)
-                }
-            }
+            avatarImage.fetchImage(from: imageURL)
         }
     }
 }
