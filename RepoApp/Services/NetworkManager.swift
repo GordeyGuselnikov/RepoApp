@@ -15,7 +15,7 @@ class NetworkManager {
     private init() {}
     
     func fetchRepositoriesFromNetwork(_ complition: @escaping ([Repository]) -> Void) {
-        AF.request(URLConstants.reposAFNetworkingAPI.rawValue)
+        AF.request(URLConstants.reposGoogle.rawValue)
             .validate()
             .responseDecodable(of: [Repository].self) { response in
                 switch response.result {

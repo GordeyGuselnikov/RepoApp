@@ -30,18 +30,18 @@ class RepositoryListTableViewController: UITableViewController {
         setupSearchController()
         
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isFiltering ? filteredRepositories.count : repositories.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepositoryTableViewCell
         
         let repository = isFiltering ? filteredRepositories[indexPath.row] : repositories[indexPath.row]
         cell.configure(with: repository)
-
+        
         return cell
     }
     
@@ -50,14 +50,14 @@ class RepositoryListTableViewController: UITableViewController {
         performSegue(withIdentifier: Segues.showDetail.rawValue, sender: currentRepository)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     // MARK: - Navigation
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == Segues.showDetail.rawValue {
-                let DetailVC = segue.destination as! DetailViewController
-                DetailVC.repository = sender as? Repository
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.showDetail.rawValue {
+            let DetailVC = segue.destination as! DetailViewController
+            DetailVC.repository = sender as? Repository
         }
+    }
 }
 
 // MARK: - Private Methods
@@ -76,9 +76,9 @@ extension RepositoryListTableViewController: UISearchResultsUpdating {
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(
             string: "Updating...",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         )
-        refreshControl?.tintColor = .black
+        refreshControl?.tintColor = .darkGray
         refreshControl?.addTarget(
             self,
             action: #selector(updateView),
