@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepositoryListTableViewController: UITableViewController {
+final class RepositoryListTableViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
     private var repositories: [Repository] = []

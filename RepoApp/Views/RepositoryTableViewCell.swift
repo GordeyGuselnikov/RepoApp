@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepositoryTableViewCell: UITableViewCell {
+final class RepositoryTableViewCell: UITableViewCell {
 
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -33,13 +33,7 @@ class RepositoryTableViewCell: UITableViewCell {
         languageLabel.text = "Language: \(repository.language ?? "Unknown")"
         starLabel.text = "\(repository.stargazersCount ?? 0)"
         forkLabel.text = "\(repository.forksCount ?? 0)"
-//        if let imageURL = repository.owner?.avatarUrl {
-//            NetworkManager.shared.getAvatarImage(from: imageURL) { imageData in
-//                DispatchQueue.main.async {
-//                    self.avatarImage.image = UIImage(data: imageData)
-//                }
-//            }
-//        }
+
         if let imageURL = repository.owner?.avatarUrl {
             avatarImage.fetchImage(from: imageURL)
         }

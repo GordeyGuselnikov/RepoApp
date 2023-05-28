@@ -8,7 +8,7 @@
 
 import Alamofire
 
-class NetworkManager {
+final class NetworkManager {
     
     static let shared = NetworkManager()
     
@@ -26,19 +26,6 @@ class NetworkManager {
                 }
         }
     }
-    
-//    func getAvatarImage(from imageUrl: String, with complition: @escaping (Data) -> Void) {
-//        AF.request(imageUrl)
-//            .validate()
-//            .responseData { (response) in
-//                switch response.result {
-//                case .success(let imageData):
-//                    complition(imageData)
-//                case .failure(let error):
-//                    print(error)
-//                }
-//        }
-//    }
     
     func getImageWithAlamofire(from url: URL, completion: @escaping(Data, URLResponse) -> Void) {
         AF.request(url)
