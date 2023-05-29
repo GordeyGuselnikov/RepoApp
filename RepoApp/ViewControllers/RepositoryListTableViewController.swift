@@ -112,9 +112,10 @@ extension RepositoryListTableViewController: UISearchResultsUpdating {
     }
     
     private func filterContentForSearchText(_ searchText: String) {
-        filteredRepositories = repositories.filter{ repositories in
-            (repositories.name?.lowercased().contains(searchText.lowercased()))! // !!!!!!!
-        }
+        filteredRepositories = repositories.filter({ (repository: Repository) -> Bool in
+            return repository.name?.lowercased().contains(searchText.lowercased()) ?? false
+        })
+        
         tableView.reloadData()
     }
 }
